@@ -1,15 +1,18 @@
-import { Link } from 'react-router-dom';
 import { Product } from '../types';
 
 interface Props {
   product: Product;
+  onClick?: () => void;
 }
 
-export function ProductCard({ product }: Props) {
+export function ProductCard({ product, onClick }: Props) {
   return (
-    <Link
-      to={`/products/${product.id}`}
-      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group"
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={onClick}
+      onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
+      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group cursor-pointer"
     >
       <div className="aspect-square bg-gray-100 overflow-hidden">
         {product.imageUrl ? (
@@ -48,6 +51,6 @@ export function ProductCard({ product }: Props) {
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

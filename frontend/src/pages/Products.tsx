@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { api } from '../services/api';
 import { Product, PaginatedResponse } from '../types';
 import { ProductCard } from '../components/ProductCard';
+import { ProductModal } from '../components/ProductModal';
 
 export function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [selected, setSelected] = useState<Product | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      fetchProducts();
-    }, 300);
+    const timer = setTimeout(fetchProducts, 300);
     return () => clearTimeout(timer);
   }, [search]);
 
@@ -51,10 +51,12 @@ export function Products() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} onClick={() => setSelected(product)} />
           ))}
         </div>
       )}
+
+      <ProductModal product={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }
