@@ -30,7 +30,7 @@ export function Products() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Produtos</h1>
         <input
@@ -43,7 +43,7 @@ export function Products() {
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="bg-gray-100 rounded-xl aspect-square animate-pulse" />
           ))}
@@ -51,7 +51,7 @@ export function Products() {
       ) : products.length === 0 ? (
         <p className="text-center text-gray-500 py-20">Nenhum produto encontrado.</p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} onClick={() => setSelected(product)} />
           ))}
