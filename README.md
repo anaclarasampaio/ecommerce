@@ -25,7 +25,7 @@ ecommerce/
 │       └── routes/
 ├── frontend/
 │   └── src/
-│       ├── components/        # Navbar, ProductCard, ProductModal, CartDrawer
+│       ├── components/        # Navbar, ProductCard, ProductModal, CartDrawer, Footer
 │       ├── contexts/          # AuthContext, CartContext, ThemeContext
 │       └── pages/             # Home, Products, Login, Register, Orders, Checkout
 └── docker-compose.yml
@@ -129,3 +129,5 @@ GET    /api/health
 - Fluxo de checkout em dois passos com integração à API
 - Autenticação com JWT (registro e login)
 - Dark mode com persistência no localStorage
+- Navbar responsiva com menu hamburger para mobile
+- Footer com links de navegação, atendimento e redes sociais
